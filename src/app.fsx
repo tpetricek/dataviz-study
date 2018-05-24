@@ -14,7 +14,12 @@ open Suave.Operators
 // When we get POST request to /log, write the received 
 // data to the log blob (on a single line)
 let app =
-  Successful.OK "Yo"
+  request (fun req ->
+    let pid = req.query |> Seq.tryPick (fun (k, v) -> if k = "pid" then v else None)
+    match pid with 
+    | Some pid -> Successful.OK ("Hello " + pid)
+    | _ -> Successful.OK "No pid..."
+  )
 
 // When port was specified, we start the app (in Azure), 
 // otherwise we do nothing (it is hosted by 'build.fsx')
