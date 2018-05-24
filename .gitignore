@@ -1,0 +1,8 @@
+.vs
+bin
+.paket/paket.exe
+.paket/Paket.Restore.targets
+paket-files
+.fake
+packages
+obj
