@@ -17,7 +17,7 @@ let app =
   request (fun req ->
     let pid = req.query |> Seq.tryPick (fun (k, v) -> if k = "pid" then v else None)
     match pid with 
-    | Some pid -> Successful.OK ("Hello " + pid)
+    | Some pid -> Successful.OK ("Hello " + pid + "<br /><a href='https://app.prolific.ac/submissions/complete?cc=LZO66C0G'>Finish...</a>")
     | _ -> Successful.OK "No pid..."
   )
 
