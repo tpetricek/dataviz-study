@@ -1,0 +1,28 @@
+{% extends "default.html" %}
+
+{% block title %}
+<h1>Thank you!</h1>
+{% endblock %}
+
+{% block body %}
+<h1>Thanks for completing this study.</h1>
+<br />
+ 
+<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt ad repellendus sed ipsam quisquam. Deserunt illum quidem numquam ipsum aperiam sapiente exercitationem mollitia expedita quis pariatur, corporis quia aliquid perferendis!</p>
+
+<br />
+
+<hr />
+
+<div class="form-group" style="text-align:right">
+  <a href="https://app.prolific.ac/submissions/complete?cc=LZO66C0G" class="btn btn-success btn-lg mb-2" style="min-width:120px">Finish</a>
+</div>
+</form>
+{{ model }}
+<script>
+  window.onload = function() { 
+    logEvent("user", "info", "", {"question1": "{{ model.Question1 }}", "share1": "{{ model.Share1 }}", "question2": "{{ model.Question2 }}", "share2": "{{ model.Share2 }}" }); 
+    logEvent("page", "loaded", "step5", window.navigator.userAgent); 
+  }
+</script>
+{% endblock %}

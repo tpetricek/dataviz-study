@@ -1,0 +1,65 @@
+{% extends "default.html" %}
+
+{% block head %}
+{% endblock %}
+
+{% block title %}
+<h1>Article #1</h1>
+{% endblock %}
+
+{% block body %}
+<form action="/step4" method="post" id="frm">
+
+<h1>Welcome</h1>
+
+<p>Hello, first tell us some basic things.</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio quod expedita iusto adipisci laudantium sint ab dignissimos odit at doloribus omnis, eaque exercitationem perferendis ex non architecto dolores voluptatem quae.</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio quod expedita iusto adipisci laudantium sint ab dignissimos odit at doloribus omnis, eaque exercitationem perferendis ex non architecto dolores voluptatem quae.</p>
+
+<div class="thegamma" id="grossDomesticProduct"></div>
+
+<script type="text/thegamma" id="grossDomesticProduct-code">let data =
+  expenditure
+    .byYear.'2015'
+    .inTermsOf.GDP
+    .sortValues(reverse=true).skip(1).take(5).shuffle()
+
+youguess.bars(data)
+  .setTitle("Expenditure in % of GDP (2015)")
+  .setAxisY(label="", labelOffset=110, labelMinimalSize=500)
+</script>
+        
+<script type="text/javascript">
+  var thegamma =
+    [ {id:"grossDomesticProduct"} ];
+</script>
+
+<div class="thegamma">
+<div id="thegamma-sizer" class="thegamma-sizer"></div>
+<div id="thegamma-dialog" class="thegamma-dialog">
+  <div id="thegamma-dialog-window" class="thegamma-dialog-window">
+    <div class="header"><a href="javascript:closeDialog();">&times;</a><span>Edit source code</span></div>
+    <div class="body"><div id="thegamma-ed"></div><div id="thegamma-errors" class="errors"></div>
+      <button id="thegamma-update">Update page</button></div>
+  </div>
+</div>
+</div>
+  
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio quod expedita iusto adipisci laudantium sint ab dignissimos odit at doloribus omnis, eaque exercitationem perferendis ex non architecto dolores voluptatem quae.</p>
+        
+<hr />
+
+<div class="form-group" style="text-align:right">
+  <input type="button" id="next" class="btn btn-lg mb-2" style="min-width:120px" value="Next"
+    onclick="logEvent('page', 'next', 'step3', '', function(){ document.getElementById('frm').submit(); })" />
+</div>
+
+</form>
+<script>
+  window.onload = function() { 
+    logEvent("user", "info", "", {"prolificid": "{{ model.ProlificId }}", "education": "{{ model.Education }}", "studying": "{{ model.Studying }}" }); 
+    logEvent("page", "loaded", "step3", window.navigator.userAgent); 
+  }
+</script>
+
+{% endblock %}

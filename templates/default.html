@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet"   
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css?family=PT+Sans|Old+Standard+TT:400,400i,700" rel="stylesheet">
+  <title>Study</title>  
+  <style type="text/css">
+    body { font-family:'PT Sans'; }
+    .header { border-bottom:solid 4px; }
+    .header h1 { font:bold 33pt 'Old Standard TT'; text-align:center; margin:35px -10px 0px -10px; }
+    article { padding:20px 0px 40px 0px; font-size:13pt; }
+    article h1 { font:26pt 'Old Standard TT'; margin-bottom:0px; line-height:30pt; }
+    article h2 { font:18pt 'Old Standard TT'; }
+    article h3 { font:14pt 'Old Standard TT'; }
+    article hr { border-bottom:solid 4px; margin:40px -10px 40px -10px; }
+  </style>
+
+  {% block head %} 
+  {% endblock %}  
+  <link href="https://thegamma.net/lib/thegamma/thegamma.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Inconsolata|Roboto:300,400,500,700,900" rel="stylesheet">
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-sm-12 col-md-8 header">
+        {% block title %}
+        {% endblock %}
+      </div>
+    </div>
+  </div>
+  <article class="container">
+    <div class="row">
+      <div class="col-md-2"></div>
+      <div class="col-sm-12 col-md-8">
+        
+        {% block body %} 
+        {% endblock %}
+        
+      </div>
+    </div>
+  </article>
+  <script type="text/javascript" src="https://thegamma.net/lib/thegamma-0.1/babel.min.js"></script>
+  <script type="text/javascript" src="https://thegamma.net/lib/thegamma-0.1/core-js.min.js"></script>
+  <script type="text/javascript" src="https://thegamma.net/lib/thegamma-0.1/require.js"></script>
+  <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+  <script type="text/javascript" src="embed.js"></script>
+</body>
+</html>
+
+
+
+
+    

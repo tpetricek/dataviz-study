@@ -1,8 +1,10 @@
-framework: >=net40
+framework: >= net40
 source https://nuget.org/api/v2
 
 nuget FAKE
-nuget Suave 1.1.3
+nuget Suave 2.0.2
+nuget Suave.DotLiquid 2.0.2
+nuget DotLiquid 2.0.64
 nuget FSharp.Data
 nuget FSharp.Compiler.Tools
 nuget FSharp.Compiler.Service

@@ -54,8 +54,8 @@ let reloadScript () =
 let getLocalServerConfig port =
   { defaultConfig with
       homeFolder = Some __SOURCE_DIRECTORY__
-      logger = Logging.Loggers.saneDefaultsFor Logging.LogLevel.Debug
-      bindings = [ HttpBinding.mkSimple HTTP  "127.0.0.1" port ] }
+      logger = Logging.Targets.create Logging.LogLevel.Info [||]
+      bindings = [ HttpBinding.createSimple HTTP  "127.0.0.1" port ] }
 
 let mutable currentApp : WebPart = Successful.OK "Loading..."
 

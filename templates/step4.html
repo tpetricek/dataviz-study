@@ -1,0 +1,38 @@
+{% extends "default.html" %}
+
+{% block head %}
+{% endblock %}
+
+{% block title %}
+<h1>Article #2</h1>
+{% endblock %}
+
+{% block body %}
+<form action="/step5" method="post" id="frm">
+
+<h1>And now for something completely different</h1>
+
+
+<p>Hello, first tell us some basic things.</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio quod expedita iusto adipisci laudantium sint ab dignissimos odit at doloribus omnis, eaque exercitationem perferendis ex non architecto dolores voluptatem quae.</p>
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio quod expedita iusto adipisci laudantium sint ab dignissimos odit at doloribus omnis, eaque exercitationem perferendis ex non architecto dolores voluptatem quae.</p>
+
+<img src="article2.jpg" />
+
+<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio quod expedita iusto adipisci laudantium sint ab dignissimos odit at doloribus omnis, eaque exercitationem perferendis ex non architecto dolores voluptatem quae.</p>
+        
+<hr />
+
+<div class="form-group" style="text-align:right">
+  <input type="button" id="next" class="btn btn-lg mb-2" style="min-width:120px" value="Next"
+    onclick="logEvent('page', 'next', 'step4', '', function(){ document.getElementById('frm').submit(); })" />
+</div>
+
+</form>
+<script>
+  window.onload = function() { 
+    logEvent("page", "loaded", "step4", window.navigator.userAgent); 
+  }
+</script>
+
+{% endblock %}

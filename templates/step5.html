@@ -1,0 +1,72 @@
+{% extends "default.html" %}
+
+{% block title %}
+<h1>Questionaire</h1>
+{% endblock %}
+
+{% block body %}
+<form action="/step6" method="post" id="frm"> 
+
+<h1>Please answer a few closing questions</h1>
+
+<p>Before you start, please maximize your browser window and switch off phone/e-mail/music & anything else distracting.</p>
+
+<p>Next, enter your Prolific ID. You can find this at the top of this webpage or by going to your account information.
+  Additionally, please provide the basic background information required below.
+</p>
+
+<br />
+
+<div class="form-group">
+  <label for="question1">Question #1</label>
+  <p>How many bars were there in the first article?</p>
+  <div>
+    <input name="question1" type="text" class="form-control" id="question1" placeholder="enter a number">
+  </div>
+</div>
+<div class="form-group">
+  <p>How likely are you to share the first article on social networks?</p>
+  <div>
+    <select class="form-control" id="share1" name="share1">
+      <option value="0">(please select)</option>
+      <option value="1">Definitely not</option>
+      <option value="2">Probably not</option>
+      <option value="3">Maybe</option>
+      <option value="4">Probably yes</option>
+      <option value="5">Definitely yes</option>
+    </select>
+  </div>
+</div>
+<div class="form-group">
+  <label for="question2">Question #2</label>
+  <p>How silly was the image in the second article?</p>
+  <div>
+    <input name="question2" type="text" class="form-control" id="question2" placeholder="enter a number">
+  </div>
+</div>
+<div class="form-group">
+  <p>How likely are you to share the first article on social networks?</p>
+  <div>
+    <select class="form-control" id="share2" name="share2">
+      <option value="0">(please select)</option>
+      <option value="1">Definitely not</option>
+      <option value="2">Probably not</option>
+      <option value="3">Maybe</option>
+      <option value="4">Probably yes</option>
+      <option value="5">Definitely yes</option>
+    </select>
+  </div>
+</div>
+    
+<hr />
+
+<div class="form-group" style="text-align:right">
+  <input type="button" id="next" class="btn btn-lg mb-2" style="min-width:120px" value="Next"
+    onclick="logEvent('page', 'next', 'step5', '', function(){ document.getElementById('frm').submit(); })" />
+</div>
+</form>
+<script>
+  window.onload = function() { logEvent("page", "loaded", "step5", window.navigator.userAgent); }
+</script>
+
+{% endblock %}

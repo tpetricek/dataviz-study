@@ -1,0 +1,43 @@
+{% extends "default.html" %}
+
+{% block title %}
+<h1>Welcome</h1>
+{% endblock %}
+
+{% block body %}
+<form action="/step2" method="post" id="frm">
+
+<h1>Thanks for showing interest in this study.</h1>
+<h2>Please read the following before starting:</h2>
+ 
+<p>Please complete this survey in one go. In other words, please only participate 
+  in this survey, if you have 1 minute that you can dedicate to it. Thank you very much.</p>
+ 
+<h2>Consent form</h2>
+ 
+<p>I consent to participate in this session, which will involve one question and one instruction, and a few explanations.
+I understand that all data will be kept confidential by the researcher. My personal information will not be stored with the data. I am free to withdraw at any time without giving a reason.
+I consent to the publication of study results as long as the information is anonymous so that no identification of participants can be made. </p>
+ 
+<p>The study has received approval from the Research Ethics Committee by the University of Xyz.</p>
+
+<br />
+
+<div class="form-group">
+  <input class="form-check-input" type="checkbox" id="ack" onchange="document.getElementById('next').disabled=document.getElementById('ack').checked?'':'disabled';">
+  <label class="form-check-label" for="ack">
+      I have read and understand the explanations and I voluntarily consent to participate in this study.
+  </label>
+</div>
+
+<hr />
+
+<div class="form-group" style="text-align:right">
+  <input type="button" id="next" class="btn btn-lg mb-2" disabled="disabled" style="min-width:120px" value="Next"
+    onclick="logEvent('page', 'next', 'step1', '', function(){ document.getElementById('frm').submit(); })" />
+</div>
+</form>
+<script>
+  window.onload = function() { logEvent("page", "loaded", "step1", window.navigator.userAgent); }
+</script>
+{% endblock %}
