@@ -22,7 +22,7 @@
 <script>
   window.onload = function() { 
     logEvent("user", "info", "", {"question1": "{{ model.Question1 }}", "share1": "{{ model.Share1 }}", "question2": "{{ model.Question2 }}", "share2": "{{ model.Share2 }}" }); 
-    logEvent("page", "loaded", "step5", window.navigator.userAgent); 
+    logEvent("page", "loaded", "step6", window.navigator.userAgent, function() { }); 
   }
 </script>
 {% endblock %}
