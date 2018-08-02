@@ -6,3 +6,6 @@ paket-files
 .fake
 packages
 obj
+
+src/any
+config.fs

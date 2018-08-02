@@ -13,6 +13,7 @@ NUGET
     FSharp.Compiler.Tools (10.0.2)
     FSharp.Core (4.3.4)
     FSharp.Data (2.4.6)
+    Microsoft.Azure.KeyVault.Core (3.0) - restriction: || (&& (>= net40) (>= wp8)) (>= net45)
     Microsoft.DiaSymReader (1.2) - restriction: || (&& (>= net40) (>= netstandard2.0)) (>= net45)
       Microsoft.Net.Compilers (>= 2.3)
     Microsoft.DiaSymReader.PortablePdb (1.4) - restriction: || (&& (>= net40) (>= netstandard2.0)) (>= net45)
@@ -59,6 +60,7 @@ NUGET
     Microsoft.NETCore.Platforms (2.0.2) - restriction: || (&& (>= net40) (< net45) (< netstandard1.2) (>= netstandard1.6)) (&& (>= net40) (< net45) (< netstandard1.3) (>= netstandard1.6)) (&& (>= net40) (< net45) (< netstandard1.4) (>= netstandard1.6)) (&& (>= net40) (< net45) (< netstandard1.5) (>= netstandard1.6)) (&& (>= net40) (< net45) (>= netstandard1.6) (< netstandard2.0)) (&& (>= net40) (< net45) (>= netstandard2.0)) (&& (>= net40) (>= netcoreapp2.0)) (&& (>= net40) (< netstandard1.0) (>= netstandard1.6)) (&& (>= net40) (< netstandard1.3) (>= netstandard1.6) (>= wpa81)) (&& (>= net40) (< netstandard1.5) (>= netstandard1.6) (>= uap10.0)) (&& (>= net40) (>= netstandard1.6) (< portable-net45+win8+wpa81)) (&& (>= net40) (>= netstandard1.6) (>= uap10.1)) (&& (>= net40) (>= netstandard1.6) (>= wp8)) (&& (>= net45) (< netstandard1.3) (>= netstandard1.6)) (&& (>= net46) (< netstandard1.4) (>= netstandard1.6)) (&& (>= net461) (>= netstandard1.6))
     NETStandard.Library (2.0.3) - restriction: || (&& (>= net40) (>= netstandard1.6)) (&& (>= net45) (< netstandard2.0))
       Microsoft.NETCore.Platforms (>= 1.1) - restriction: || (&& (>= net40) (< net45) (>= netstandard1.1) (< netstandard1.2)) (&& (>= net40) (< net45) (>= netstandard1.2) (< netstandard1.3)) (&& (>= net40) (< net45) (>= netstandard1.3) (< netstandard1.4)) (&& (>= net40) (< net45) (>= netstandard1.4) (< netstandard1.5)) (&& (>= net40) (< net45) (>= netstandard1.5) (< netstandard1.6)) (&& (>= net40) (< net45) (>= netstandard1.6) (< netstandard2.0)) (&& (>= net40) (< net45) (>= netstandard2.0)) (&& (>= net40) (>= netcoreapp2.0)) (&& (>= net40) (>= netstandard1.0) (< portable-net45+win8+wpa81)) (&& (>= net40) (< netstandard1.0) (>= portable-net45+win8)) (&& (>= net40) (< netstandard1.0) (< portable-net45+win8) (>= portable-net45+win8+wpa81)) (&& (>= net40) (< netstandard1.0) (>= portable-net45+win8+wp8+wpa81) (< portable-net45+win8+wpa81)) (&& (>= net40) (< netstandard1.0) (>= win8)) (&& (>= net40) (< netstandard1.3) (>= wpa81)) (&& (>= net40) (< netstandard1.5) (>= uap10.0)) (&& (>= net40) (>= uap10.1)) (&& (>= net40) (>= wp8)) (&& (>= net45) (< netstandard1.3)) (&& (>= net46) (< netstandard1.4)) (>= net461)
+    Newtonsoft.Json (11.0.2) - restriction: || (&& (>= net40) (>= netstandard1.0) (< netstandard1.3)) (&& (>= net40) (< netstandard1.0) (>= win8)) (&& (>= net40) (>= netstandard1.3)) (&& (>= net40) (>= wp8)) (&& (>= net40) (>= wpa81)) (>= net45)
     Suave (2.0.2)
       FSharp.Core (>= 4.0.0.1) - restriction: && (>= net40) (< netstandard1.6)
       Microsoft.FSharp.Core.netcore (>= 1.0.0-alpha-161205) - restriction: && (>= net40) (>= netstandard1.6)
@@ -138,3 +140,6 @@ NUGET
     System.Threading.Timer (4.3) - restriction: && (>= net40) (>= netstandard1.6)
     System.ValueTuple (4.4) - restriction: >= net45
       NETStandard.Library (>= 1.6.1) - restriction: && (>= net40) (< net461) (>= netstandard1.0) (< netstandard2.0)
+    WindowsAzure.Storage (9.3)
+      Microsoft.Azure.KeyVault.Core (>= 1.0) - restriction: || (&& (>= net40) (>= wp8)) (>= net45)
+      Newtonsoft.Json (>= 10.0.2) - restriction: || (&& (>= net40) (>= netstandard1.0) (< netstandard1.3)) (&& (>= net40) (< netstandard1.0) (>= win8)) (&& (>= net40) (>= netstandard1.3)) (&& (>= net40) (>= wp8)) (&& (>= net40) (>= wpa81)) (>= net45)

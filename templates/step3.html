@@ -4,36 +4,126 @@
 {% endblock %}
 
 {% block title %}
-<h1>Article #1</h1>
+<h1>Trade War</h1>
 {% endblock %}
 
 {% block body %}
 <form action="/step4" method="post" id="frm">
+<style>
+.anim {
+  -webkit-transition: opacity 0.5s ease-in-out;
+  -moz-transition: opacity 0.5s ease-in-out;
+  transition: opacity 0.5s ease-in-out;
+}
+</style>
 
-<h1>Welcome</h1>
+<h1>USA and China impose tit-for-tat tariffs</h1>
 
-<p>Hello, first tell us some basic things.</p>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio quod expedita iusto adipisci laudantium sint ab dignissimos odit at doloribus omnis, eaque exercitationem perferendis ex non architecto dolores voluptatem quae.</p>
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio quod expedita iusto adipisci laudantium sint ab dignissimos odit at doloribus omnis, eaque exercitationem perferendis ex non architecto dolores voluptatem quae.</p>
+<p>The trade war between the US and other major economies escalated on Friday after Washington and Beijing launched punitive import tariffs on $34bn worth of each other’s goods.</p>
 
-<div class="thegamma" id="grossDomesticProduct"></div>
+<h2>What are tariffs?</h2>
+<p>Tariffs are border taxes charged on foreign imports. When a government or economic bloc (such as the EU) imposes a tariff on a particular product, importers pay the levy as a percentage of the total value of the product to the customs agency of that country, at the point of entry.</p>
+<p>They are imposed to increase the price of foreign goods to make domestic produce cheaper in comparison, with the aim of protecting local firms from global competition. According to tariff supporters, this can help to save jobs that might otherwise go overseas.</p>
 
-<script type="text/thegamma" id="grossDomesticProduct-code">let data =
-  expenditure
-    .byYear.'2015'
-    .inTermsOf.GDP
-    .sortValues(reverse=true).skip(1).take(5).shuffle()
+<h2>Why is the USA imposing tariffs?</h2>
+<p>The root of the problem for Trump stems from the North American Free Trade Agreement (Nafta), signed in 1994, which the president has called a “disaster” and “one of the worst deals anybody in history has ever entered into”. The White House wants to renegotiate the terms of Nafta and is using import tariffs to apply pressure.</p>
+<p>When it comes to China, Trump believes Beijing is using “unfair” trade practices to gain an advantage on the US, including lax observation of intellectual property law.
+  The president also takes issue with the size of the US trade deficit with China.</p>
 
-youguess.bars(data)
-  .setTitle("Expenditure in % of GDP (2015)")
-  .setAxisY(label="", labelOffset=110, labelMinimalSize=500)
+{% if model.VisualMode %}
+<p>To continue, try to guess the total exports to China from USA and the other way round, as well as the imposed tariffs. Click on each bar to move it left or right.</p>
+<div class="thegamma" id="trade"></div>
+<script type="text/thegamma" id="trade-code">let data =
+  shared.'by date'.'August 2018'.'Trade war between US and China'
+    .'get series'.'with key Information'.'and value Value'
+    .reverse()
+
+let lbl = "Total exports and exports affected by tariffs (in billions of US dollars)"
+youguess.bars(data).setAxisX(maxValue=500, label=lbl)
 </script>
-        
+{% endif %}
+
+<div id="trade-completed" class="anim" {% if model.InteractiveMode %}style="opacity:0;height:0px;"{% endif %}>
+{% if model.VisualMode %}
+<br />
+{% endif %}
+<p>Some economists question the accuracy of the official figures, yet the <a href="https://atlas.media.mit.edu/" target="_blank">United Nations Statistical Division (COMTRADE)</a> shows America bought $314bn more of Chinese goods than the total value of all US goods sold in the Asian country in 2016.
+  According to the official figures, the total value of <a href="https://atlas.media.mit.edu/en/visualize/tree_map/hs92/export/chn/usa/show/2016/" target="_blank">exports to USA from China is $436bn</a>
+  and the total value of <a href="https://atlas.media.mit.edu/en/visualize/tree_map/hs92/export/usa/chn/show/2016/" target="_blank">exports to China from USA is $122bn</a>.
+</p>
+
+{% if model.VisualMode %}
+{% else %}
+<div style="padding:10px 30px 10px 30px"><img src="article1.jpg" class="img-responsive" /></div>
+{% endif %}
+
+<h2>What do the tariffs cover?</h2>
+<p>The total value of the US tariffs on China amounts to $50bn, though they will come into effect in two tranches, with the first round covering 818 products worth about $34bn having come into force on Friday 27 July. A second round will cover 284 more products at a later date.</p>
+<p>Among the products on the list are nuclear reactors, boats, aircraft engines, semiconductors and a lengthy list of other industrial and agricultural machines.</p>
+
+{% if model.VisualMode %}
+<p>The following visualization shows five categories of products that account for 80% of the exports from China to USA. To continue try to guess the total value per category. Click on each bar to move it left or right.</p>
+
+<div class="thegamma" id="chtous"></div>
+<script type="text/thegamma" id="chtous-code">let data =
+  shared.'by date'.'August 2018'.'Imports from USA to China in 2016'
+    .'get series'.'with key Category'.'and value Total'.shuffle()
+
+youguess.bars(data).setAxisX(label="Imports from USA to China in 2016 (billions of $)")
+</script>
+{% endif %}
+</div>
+<div id="chtous-completed" class="anim" {% if model.InteractiveMode %}style="opacity:0;height:0px;"{% endif %}>
+{% if model.VisualMode %}
+<br />
+{% endif %}
+<p>The top 5 categories of products that account for 80% of the exports from China to USA are Machines ($214bn), Miscellaneous ($52bn), Textiles ($40), Metals ($22bn) and Plastics and Rubbers ($19bn).</p>
+<h2>Have US trade partners retaliated?</h2>
+<p>Beijing hit back with tariffs worth $34bn and has said it will match Trump’s $50bn threat. China’s retaliatory targets include soya beans, which will hit agricultural communities, as well as cotton, corn, tobacco and cars.    </p>
+
+{% if model.VisualMode %}
+<p>The following visualization shows five categories of products that account for 75% of the exports from USA to China. To continue try to guess the total value per category. Click on each bar to move it left or right.</p>
+
+<div class="thegamma" id="ustoch"></div>
+<script type="text/thegamma" id="ustoch-code">let data =
+  shared.'by date'.'August 2018'.'Imports from China to USA in 2016'
+    .'get series'.'with key Category'.'and value Value'.shuffle()
+
+youguess.bars(data).setAxisX(label="Imports from China to USA in 2016 (billions of $)")
+</script>
+{% endif %}
+
+</div>
+  
+<div id="ustoch-completed"{% if model.InteractiveMode %} style="opacity:0;height:0px;"{% endif %}>
+{% if model.VisualMode %}
+<br />
+{% endif %}
+<p>The top 5 categories of products that account for 75% of the exports from China to USA are Machines ($26bn), Transportation ($25bn), Vegetable Products ($17bn), Instruments ($11bn) and Chemical Products ($10bn).</p>
+<p>There have been no formal talks between Washington and Beijing for weeks over Trump’s demands that China make fundamental changes to its policies on intellectual property protection, technology transfers and subsidies for high technology industries.</p>
+<p>Two Trump administration officials told reporters on a conference call that Trump remains open to communications with Beijing and that through informal conversations the two countries are discussing whether a “fruitful negotiation” is possible. “We don’t have anything to announce today about a specific event, or a specific round of discussions, but communication remains open and we are trying to figure out whether the conditions present themselves for a specific engagement between the two sides,” one of the officials said.</p>
+<hr />
+<div class="form-group" style="text-align:right">
+  <input type="button" id="next" class="btn btn-lg mb-2" style="min-width:120px" value="Next"
+    onclick="logEvent('page', 'next', 'step3', '', function(){ document.getElementById('frm').submit(); })" />
+</div>
+</div>
+
 <script type="text/javascript">
-  var thegamma =
-    [ {id:"grossDomesticProduct"} ];
+var thegamma =
+  [ 
+{% if model.VisualMode %}
+    {id:"trade", reveal:["trade-completed"], revealreset:["chtous"]},
+    {id:"chtous", reveal:["chtous-completed"], revealreset:["ustoch"]},
+    {id:"ustoch", reveal:["ustoch-completed"]} 
+{% endif %}    
+  ];
+{% if model.InteractiveMode %} 
+{% else %}
+var thegammaCompleted = true;
+{% endif %}
 </script>
-
+  
 <div class="thegamma">
 <div id="thegamma-sizer" class="thegamma-sizer"></div>
 <div id="thegamma-dialog" class="thegamma-dialog">
@@ -44,20 +134,11 @@ youguess.bars(data)
   </div>
 </div>
 </div>
-  
-<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Distinctio quod expedita iusto adipisci laudantium sint ab dignissimos odit at doloribus omnis, eaque exercitationem perferendis ex non architecto dolores voluptatem quae.</p>
-        
-<hr />
-
-<div class="form-group" style="text-align:right">
-  <input type="button" id="next" class="btn btn-lg mb-2" style="min-width:120px" value="Next"
-    onclick="logEvent('page', 'next', 'step3', '', function(){ document.getElementById('frm').submit(); })" />
-</div>
 
 </form>
 <script>
   window.onload = function() { 
-    logEvent("user", "info", "", {"prolificid": "{{ model.ProlificId }}", "education": "{{ model.Education }}", "studying": "{{ model.Studying }}" }); 
+    logEvent("user", "info", "", {"prolificid": "{{ model.ProlificId }}" }); 
     logEvent("page", "loaded", "step3", window.navigator.userAgent); 
   }
 </script>

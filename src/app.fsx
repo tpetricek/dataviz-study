@@ -3,6 +3,10 @@
 #r "../packages/DotLiquid/lib/net451/DotLiquid.dll"
 #r "../packages/Suave/lib/net40/Suave.dll"
 #r "../packages/Suave.DotLiquid/lib/net40/Suave.DotLiquid.dll"
+#r "../packages/WindowsAzure.Storage/lib/net45/Microsoft.WindowsAzure.Storage.dll"
+#r "../packages/Microsoft.Azure.KeyVault.Core/lib/net452/Microsoft.Azure.KeyVault.Core.dll"
+#r "../packages/Newtonsoft.Json/lib/net45/Newtonsoft.Json.dll"
+#load "config.fs" "storage.fs"
 #else
 module Server
 #endif
@@ -11,6 +15,12 @@ open System
 open Suave.Filters
 open Suave.Writers
 open Suave.Operators
+
+#if INTERACTIVE
+let connStrBlob = Config.DataVizStore
+#else
+let connStrBlob = Environment.GetEnvironmentVariable("CUSTOMCONNSTR_DATAVIZ_CONFIG")
+#endif
 
 let (</>) a b = IO.Path.Combine(a, b)
 let asm, debug = 
@@ -23,9 +33,9 @@ DotLiquid.setTemplatesDir templ
 DotLiquid.setCSharpNamingConvention()
 
 type Step2 = 
-  { ProlificId : string 
-    Education : string
-    Studying : bool }
+  { ProlificId : string
+    InteractiveMode : bool 
+    VisualMode : bool }
 
 type Step5 = 
   { Question1 : string 
@@ -33,11 +43,20 @@ type Step5 =
     Question2 : string
     Share2 : int }
 
+let rec getStep2ForId id = 
+  let raw = defaultArg (Storage.tryReadBlob connStrBlob "prolific" "users.txt") ""
+  let ids = raw.Split('\n')
+  match Array.tryFindIndex ((=) id) ids with
+  | None -> 
+      Storage.writeBlob connStrBlob "prolific" "users.txt" (raw + "\n" + id)
+      getStep2ForId id
+  | Some idx when idx % 3 = 0 -> printfn "zero"; { ProlificId = id; InteractiveMode = true; VisualMode = true }
+  | Some idx when idx % 3 = 1 -> printfn "one";{ ProlificId = id; InteractiveMode = false; VisualMode = true }
+  | Some idx -> printfn "else %d" idx; { ProlificId = id; InteractiveMode = false; VisualMode = false }
+      
 let parseStep2 form = 
   let form = Map.ofSeq (List.choose (function (k, None) -> None | (k, Some v) -> Some(k, v)) form)
-  { ProlificId = defaultArg (form.TryFind "prolificid") "missing"
-    Education = defaultArg (form.TryFind "education") "missing"
-    Studying = form.TryFind "student" = Some "on" }
+  getStep2ForId (defaultArg (form.TryFind "prolificid") "missing")
 
 let parseStep5 form = 
   let form = Map.ofSeq (List.choose (function (k, None) -> None | (k, Some v) -> Some(k, v)) form)
@@ -48,16 +67,16 @@ let parseStep5 form =
 
 // When we get POST request to /log, write the received 
 // data to the log blob (on a single line)
-let app = request (fun r ->
+let app = 
   choose [
     path "/" >=> DotLiquid.page "step1.html" null
     path "/step2" >=> DotLiquid.page "step2.html" null
-    path "/step3" >=> DotLiquid.page "step3.html" (parseStep2 r.form)
+    path "/step3" >=> request (fun r -> DotLiquid.page "step3.html" (parseStep2 r.form))
     path "/step4" >=> DotLiquid.page "step4.html" null
     path "/step5" >=> DotLiquid.page "step5.html" null
-    path "/step6" >=> DotLiquid.page "step6.html" (parseStep5 r.form)
+    path "/step6" >=> request (fun r -> DotLiquid.page "step6.html" (parseStep5 r.form))
     Files.browse root
-  ])
+  ]
 
 //  request (fun req ->
 //    let pid = req.query |> Seq.tryPick (fun (k, v) -> if k = "pid" then v else None)
