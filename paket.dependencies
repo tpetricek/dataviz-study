@@ -1,7 +1,7 @@
 framework: >= net40
 source https://nuget.org/api/v2
 
-nuget FAKE
+nuget FAKE 4.64.13
 nuget Suave 2.0.2
 nuget Suave.DotLiquid 2.0.2
 nuget DotLiquid 2.0.64
