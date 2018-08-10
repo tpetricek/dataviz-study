@@ -38,10 +38,13 @@ type Step2 =
     VisualMode : bool }
 
 type Step5 = 
-  { Question1 : string 
-    Share1 : int
+  { Share1 : int
+    Share2 : int 
+    Question1 : string 
     Question2 : string
-    Share2 : int }
+    Question3 : string
+    Question4 : string
+    Question5 : string }
 
 let rec getStep2ForId id = 
   let raw = defaultArg (Storage.tryReadBlob connStrBlob "prolific" "users.txt") ""
@@ -50,9 +53,9 @@ let rec getStep2ForId id =
   | None -> 
       Storage.writeBlob connStrBlob "prolific" "users.txt" (raw + "\n" + id)
       getStep2ForId id
-  | Some idx when idx % 3 = 0 -> printfn "zero"; { ProlificId = id; InteractiveMode = true; VisualMode = true }
-  | Some idx when idx % 3 = 1 -> printfn "one";{ ProlificId = id; InteractiveMode = false; VisualMode = true }
-  | Some idx -> printfn "else %d" idx; { ProlificId = id; InteractiveMode = false; VisualMode = false }
+  | Some idx when idx % 3 = 0 -> { ProlificId = id; InteractiveMode = true; VisualMode = true }
+  | Some idx when idx % 3 = 1 -> { ProlificId = id; InteractiveMode = false; VisualMode = true }
+  | Some idx -> { ProlificId = id; InteractiveMode = false; VisualMode = false }
       
 let parseStep2 form = 
   let form = Map.ofSeq (List.choose (function (k, None) -> None | (k, Some v) -> Some(k, v)) form)
@@ -62,6 +65,9 @@ let parseStep5 form =
   let form = Map.ofSeq (List.choose (function (k, None) -> None | (k, Some v) -> Some(k, v)) form)
   { Question1 = defaultArg (form.TryFind "question1") "missing"
     Question2 = defaultArg (form.TryFind "question2") "missing"
+    Question3 = defaultArg (form.TryFind "question3") "missing"
+    Question4 = defaultArg (form.TryFind "question4") "missing"
+    Question5 = defaultArg (form.TryFind "question5") "missing"
     Share1 = defaultArg (Option.map int (form.TryFind "share1")) 0
     Share2 = defaultArg (Option.map int (form.TryFind "share2")) 0 }
 

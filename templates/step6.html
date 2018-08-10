@@ -5,11 +5,21 @@
 {% endblock %}
 
 {% block body %}
-<h1>Thanks for completing this study.</h1>
+<h1>Thanks for completing the study</h1>
 <br />
- 
-<p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nesciunt ad repellendus sed ipsam quisquam. Deserunt illum quidem numquam ipsum aperiam sapiente exercitationem mollitia expedita quis pariatur, corporis quia aliquid perferendis!</p>
+<h2>Study description</h2>
+<p>The purpose of the study was to explore how data visualizations and interactive data visualizations
+  help readers understand and remember news stories and whether they make news stories more engaging.
+  The study had three different versions of the first article. One with an interactive visualization,
+  one with static visualization and one with just an illustrative image. The second article was the same
+  for everyone. The purpose of our research is to assess which of the three methods provides the most
+  effective way of communicating information.
+</p>
 
+<h2>Return to Prolific</h2>
+<p>Please click the "Next" button to continue back to Prolific. If you have any questions or issues,
+  please contact us through the Prolific "Contact researcher" facility.
+</p>
 <br />
 
 <hr />
@@ -21,7 +31,11 @@
 {{ model }}
 <script>
   window.onload = function() { 
-    logEvent("user", "info", "", {"question1": "{{ model.Question1 }}", "share1": "{{ model.Share1 }}", "question2": "{{ model.Question2 }}", "share2": "{{ model.Share2 }}" }); 
+    logEvent("user", "info", "", {
+      "question1": "{{ model.Question1 }}", "question2": "{{ model.Question2 }}", 
+      "question3": "{{ model.Question3 }}", "question4": "{{ model.Question4 }}", 
+      "question5": "{{ model.Question5 }}", 
+      "share1": "{{ model.Share1 }}", "share2": "{{ model.Share2 }}" }); 
     logEvent("page", "loaded", "step6", window.navigator.userAgent, function() { }); 
   }
 </script>

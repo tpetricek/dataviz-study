@@ -4,7 +4,7 @@
 {% endblock %}
 
 {% block title %}
-<h1>Trade War</h1>
+<h1>Task 1 of 3</h1>
 {% endblock %}
 
 {% block body %}
@@ -16,6 +16,22 @@
   transition: opacity 0.5s ease-in-out;
 }
 </style>
+
+<p style="text-align:center">
+{% if model.InteractiveMode %}
+<strong>Instructions</strong><br/> Please read the recent news story below, and follow any further instructions in the text.
+Note that the news story involves interactive visualizations. Please complete those as described in the text of the news story.
+This is required before the rest of the article and the "Next" button appears.
+{% else %}
+{% if model.VisualMode %}
+<strong>Instructions</strong><br /> Please read the recent news story below.
+Note that the news story contains a number of static visualizations. Please review the visualizations before continuing.
+{% else %}
+<strong>Instructions</strong><br /> Please read the recent news story below.
+{% endif %}
+{% endif %}
+</p>
+<br />
 
 <h1>USA and China impose tit-for-tat tariffs</h1>
 
@@ -47,7 +63,7 @@ youguess.bars(data).setAxisX(maxValue=500, label=lbl)
 {% if model.VisualMode %}
 <br />
 {% endif %}
-<p>Some economists question the accuracy of the official figures, yet the <a href="https://atlas.media.mit.edu/" target="_blank">United Nations Statistical Division (COMTRADE)</a> shows America bought $314bn more of Chinese goods than the total value of all US goods sold in the Asian country in 2016.
+<p>The <a href="https://atlas.media.mit.edu/" target="_blank">United Nations Statistical Division (COMTRADE)</a> shows America bought $314bn more of Chinese goods than the total value of all US goods sold in the Asian country in 2016.
   According to the official figures, the total value of <a href="https://atlas.media.mit.edu/en/visualize/tree_map/hs92/export/chn/usa/show/2016/" target="_blank">exports to USA from China is $436bn</a>
   and the total value of <a href="https://atlas.media.mit.edu/en/visualize/tree_map/hs92/export/usa/chn/show/2016/" target="_blank">exports to China from USA is $122bn</a>.
 </p>

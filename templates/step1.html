@@ -7,26 +7,35 @@
 {% block body %}
 <form action="/step2" method="post" id="frm">
 
-<h1>Thanks for showing interest in this study.</h1>
-<h2>Please read the following before starting:</h2>
+<h1>Thank you for joining our study</h1>
  
-<p>Please complete this survey in one go. In other words, please only participate 
-  in this survey, if you have 1 minute that you can dedicate to it. Thank you very much.</p>
- 
+<p>Please read the following important information before starting the study.
+  We ask you to complete this survey, which will take approximately 15 minutes in one go. 
+  In other words, please take the survey now only if you have 15 minutes that you can 
+  dedicate to it.  Thank you very much.</p>
+
+<h2>Study instructions</h2>
+<p>In this study, you will be asked to read two newspaper articles. After that, you will be 
+  asked to answer a couple of questions about the two articles. The news stories have been selected
+  should not cause emotional harm or distress, but they relate to recent newsworthy events.</p>
+
 <h2>Consent form</h2>
  
-<p>I consent to participate in this session, which will involve one question and one instruction, and a few explanations.
-I understand that all data will be kept confidential by the researcher. My personal information will not be stored with the data. I am free to withdraw at any time without giving a reason.
-I consent to the publication of study results as long as the information is anonymous so that no identification of participants can be made. </p>
+<p>I consent to participate in this session, which will involve reading two articles and answering
+  six questions. I understand that all data will be kept confidential by the researcher. No personal 
+  information will not be stored as part of the data collection. I am free to withdraw at any time without giving a reason.
+  I consent to the publication of study results as long as the information is anonymous so that no 
+  participants could be identified. </p>
  
-<p>The study has received approval from the Research Ethics Committee by the University of Xyz.</p>
+<p>The study has received approval from the Ethics Advisory Group of The Alan Turing Institute and
+  by the University of Kent.</p>
 
 <br />
 
 <div class="form-group">
   <input class="form-check-input" type="checkbox" id="ack" onchange="document.getElementById('next').disabled=document.getElementById('ack').checked?'':'disabled';">
   <label class="form-check-label" for="ack">
-      I have read and understand the explanations and I voluntarily consent to participate in this study.
+      I have read and understand the explanations and I consent to participate in this study.
   </label>
 </div>
 

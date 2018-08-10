@@ -1,27 +1,55 @@
 {% extends "default.html" %}
 
 {% block title %}
-<h1>Questionaire</h1>
+<h1>Task 3 of 3</h1>
 {% endblock %}
 
 {% block body %}
 <form action="/step6" method="post" id="frm"> 
 
-<h1>Please answer a few closing questions</h1>
+<h1>Please answer the following questions</h1>
 
-<p>Before you start, please maximize your browser window and switch off phone/e-mail/music & anything else distracting.</p>
-
-<p>Next, enter your Prolific ID. You can find this at the top of this webpage or by going to your account information.
-  Additionally, please provide the basic background information required below.
+<p>The following six questions ask about the previous two articles. For each article, we ask two 
+  questions about some of the factual information included in the article and one question related
+  to social media. If you do not remember the exact answer, please <strong>do not leave the answer empty</strong>,
+  but instead, make a best guess based on what you remember from the article or based on your general
+  knowledge about the topic.
 </p>
 
 <br />
 
 <div class="form-group">
-  <label for="question1">Question #1</label>
-  <p>How many bars were there in the first article?</p>
+  <h2>Article #1: USA and China impose tit-for-tat tariffs</h2>
+  <p>The article stated that the total value of exports to USA from China is $436bn.
+    How much is the total value of exports to China from USA?
+  </p>
   <div>
-    <input name="question1" type="text" class="form-control" id="question1" placeholder="enter a number">
+    <input name="question1" type="text" class="form-control" id="question1" placeholder="Enter a number in billions of dollars">
+  </div>
+</div>
+<div class="form-group">
+  <p>
+    The article listed top 5 categories of products that account for 75% of the exports from China to USA.
+    The two largest categories accounted for roughly the same amount of total exports. Please select the two
+    top categories in the following list. The categories in the list are sorted alphabetically.
+  </p>
+  <div>
+    <select class="form-control" id="question2" name="question2" style="margin-bottom: 10px">
+      <option value="0">(Please select first category)</option>
+      <option value="chemical">Chemical Products</option>
+      <option value="instruments">Instruments</option>
+      <option value="machines">Machines</option>
+      <option value="transportation">Transportation</option>
+      <option value="vegetable">Vegetable Products</option>
+    </select>
+    <select class="form-control" id="question3" name="question3">
+      <option value="0">(Please select second category)</option>
+      <option value="chemical">Chemical Products</option>
+      <option value="instruments">Instruments</option>
+      <option value="machines">Machines</option>
+      <option value="transportation">Transportation</option>
+      <option value="vegetable">Vegetable Products</option>
+    </select>
   </div>
 </div>
 <div class="form-group">
@@ -37,11 +65,29 @@
     </select>
   </div>
 </div>
+<br />
 <div class="form-group">
-  <label for="question2">Question #2</label>
-  <p>How silly was the image in the second article?</p>
+  <h2>Article #2: Jurassic World: Fallen Kingdom is No. 1</h2>
+  <p>The article stated that the blockbuster sequel to "Jurassic World" earned $60 million in its second weekend.
+    What was the domestic earning (in the same week) of the movie that took the second place?
+  </p>
   <div>
-    <input name="question2" type="text" class="form-control" id="question2" placeholder="enter a number">
+    <input name="question4" type="text" class="form-control" id="question4" placeholder="Enter a number in millions of dollars">
+  </div>
+</div>
+<div class="form-group">
+  <p>
+    The article listed earnings of four different movies and noted that the one with the 
+    largest earnings during the week was "Jurassic World: Fallen Kingdom". What was the movie
+    with second largest earnings? The movies are listed alphabetically.
+  </p>
+  <div>
+    <select class="form-control" id="question5" name="question5" style="margin-bottom: 10px">
+      <option value="0">(Please select the second movie)</option>
+      <option value="incredibles">Incredibles 2</option>
+      <option value="sicario">Sicario: Day of the Soldado/option>
+      <option value="uncle">Uncle Drew</option>
+    </select>
   </div>
 </div>
 <div class="form-group">
