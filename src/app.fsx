@@ -40,6 +40,7 @@ type Step2 =
 type Step5 = 
   { Share1 : int
     Share2 : int 
+    Return : string
     Question1 : string 
     Question2 : string
     Question3 : string
@@ -61,13 +62,14 @@ let parseStep2 form =
   let form = Map.ofSeq (List.choose (function (k, None) -> None | (k, Some v) -> Some(k, v)) form)
   getStep2ForId (defaultArg (form.TryFind "prolificid") "missing")
 
-let parseStep5 form = 
+let parseStep5 id form = 
   let form = Map.ofSeq (List.choose (function (k, None) -> None | (k, Some v) -> Some(k, v)) form)
   { Question1 = defaultArg (form.TryFind "question1") "missing"
     Question2 = defaultArg (form.TryFind "question2") "missing"
     Question3 = defaultArg (form.TryFind "question3") "missing"
     Question4 = defaultArg (form.TryFind "question4") "missing"
     Question5 = defaultArg (form.TryFind "question5") "missing"
+    Return = id
     Share1 = defaultArg (Option.map int (form.TryFind "share1")) 0
     Share2 = defaultArg (Option.map int (form.TryFind "share2")) 0 }
 
@@ -75,12 +77,12 @@ let parseStep5 form =
 // data to the log blob (on a single line)
 let app = 
   choose [
-    path "/" >=> DotLiquid.page "step1.html" null
-    path "/step2" >=> DotLiquid.page "step2.html" null
-    path "/step3" >=> request (fun r -> DotLiquid.page "step3.html" (parseStep2 r.form))
-    path "/step4" >=> DotLiquid.page "step4.html" null
-    path "/step5" >=> DotLiquid.page "step5.html" null
-    path "/step6" >=> request (fun r -> DotLiquid.page "step6.html" (parseStep5 r.form))
+    pathScan "/%s/step1" (fun id -> DotLiquid.page "step1.html" null)
+    pathScan "/%s/step2" (fun id -> DotLiquid.page "step2.html" null)
+    pathScan "/%s/step3" (fun id -> request (fun r -> DotLiquid.page "step3.html" (parseStep2 r.form)))
+    pathScan "/%s/step4" (fun id -> DotLiquid.page "step4.html" null)
+    pathScan "/%s/step5" (fun id -> DotLiquid.page "step5.html" null)
+    pathScan "/%s/step6" (fun id -> request (fun r -> DotLiquid.page "step6.html" (parseStep5 id r.form)))
     Files.browse root
   ]
 
