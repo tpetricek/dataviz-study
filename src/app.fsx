@@ -77,6 +77,7 @@ let parseStep5 id form =
 // data to the log blob (on a single line)
 let app = 
   choose [
+    path "/" >=> Successful.OK "Server running..."
     pathScan "/%s/step1" (fun id -> DotLiquid.page "step1.html" null)
     pathScan "/%s/step2" (fun id -> DotLiquid.page "step2.html" null)
     pathScan "/%s/step3" (fun id -> request (fun r -> DotLiquid.page "step3.html" (parseStep2 r.form)))

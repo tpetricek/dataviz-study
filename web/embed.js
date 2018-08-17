@@ -166,7 +166,7 @@ function loadTheGamma(completed) {
     paths:{'vs':vsRoot},
     map:{ "*":{"monaco":"vs/editor/editor.main"}}
   });
-  require(["vs/editor/editor.main", theGammaRoot + "/thegamma.js"], function (_, g) {
+  require(["vs/editor/editor.main", "../thegamma.js"], function (_, g) {
     var services = "https://thegamma-services.azurewebsites.net/";
     var gallery = "https://gallery-csv-service.azurewebsites.net/";
     var providers =
